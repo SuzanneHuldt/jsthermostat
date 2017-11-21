@@ -1,8 +1,6 @@
 
-
-
 describe("#thermostat up", function() {
-  thermostat1 = new Thermostat
+  thermostat1 = new Thermostat();
   it("increases the temperature by argument amount", function() {
     expect(thermostat1.up(3)).toBe(23);
   });
@@ -10,7 +8,7 @@ describe("#thermostat up", function() {
 
 describe("#thermostat down", function() {
 
-  thermostat2 = new Thermostat
+  thermostat2 = new Thermostat();
 
   it("decreases the temperature by argument amount", function() {
 
@@ -19,21 +17,21 @@ describe("#thermostat down", function() {
 });
 
 describe("#thermostat minimum", function() {
-  thermostat3 = new Thermostat
+  thermostat3 = new Thermostat();
   it("temp does not go below min", function() {
     expect(thermostat3.down(11)).toBe(10);
   });
 });
 
 describe("#thermostat maximum", function() {
-  thermostat4 = new Thermostat
+  thermostat4 = new Thermostat();
   it("temp does not exceed max", function() {
     expect(thermostat4.down(11)).toBe(10);
   });
 });
 
 describe("#thermostat powersaveon", function() {
-  thermostat4 = new Thermostat
+  thermostat4 = new Thermostat();
   thermostat4.powerSaveOff()
   thermostat4.powerSaveOn()
   it("stops temp exceeding 25 max", function() {
@@ -42,7 +40,7 @@ describe("#thermostat powersaveon", function() {
 });
 
 describe("#thermostat powersaveoff", function() {
-  thermostat5 = new Thermostat
+  thermostat5 = new Thermostat();
   thermostat5.powerSaveOff()
   it("allows temperature to exceed 25 up to 32 max", function() {
     expect(thermostat5.up(40)).toBe(32);
@@ -50,10 +48,18 @@ describe("#thermostat powersaveoff", function() {
 });
 
 describe("#thermostat reset", function() {
-  thermostat6 = new Thermostat
+  thermostat6 = new Thermostat();
   thermostat6.up(10)
-  thermostat6.reset()
+  thermostat6.resetTemp()
   it("resets the temperature to 20", function() {
-    expect(thermostat6.temp.toBe(20);
+    expect(thermostat6.showTemp()).toBe(20);
+  });
+});
+
+describe("#thermostat energy usage", function() {
+  thermostat7 = new Thermostat();
+  thermostat7.down(10)
+  it("returns high, medium or low depending on temp band", function() {
+    expect(thermostat7.myTemp()).toBe('low');
   });
 });
